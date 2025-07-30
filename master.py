@@ -1,6 +1,5 @@
+from Database import start_db
+
 print("hello world")
 
-x=0
-while x==0:
-    print("x=0"),
-    x=x+1
+start_db()
