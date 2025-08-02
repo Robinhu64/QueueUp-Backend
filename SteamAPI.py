@@ -5,13 +5,13 @@ response = requests.get("https://steamspy.com/api.php?request=all")
 data = response.json()
 appid_list = list(data.keys())
 
-x = 0
 name_list = []
 header_list = []
 tags_list = []
-while x < len(appid_list):
-    time.sleep(2)
-    response = requests.get("https://store.steampowered.com/api/appdetails?appids=" + appid_list[x])
+delay_time = 1.5
+for appid in appid_list:
+    time.sleep(delay_time)
+    response = requests.get("https://store.steampowered.com/api/appdetails?appids=" + appid_list[appid])
     print(response.status_code)
     details = response.json()
     for app in details.values():
@@ -26,7 +26,6 @@ while x < len(appid_list):
             if tags:
                 tags_list.append(tags)
 
-    x += 1
 
 print(name_list)
 print(header_list)
